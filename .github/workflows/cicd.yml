@@ -1,0 +1,59 @@
+name: "CI/CD"
+on:
+- push
+- pull_request
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v22
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - run: nix flake check
+  build-html:
+    needs:
+    - check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v22
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - run: nix build .#html
+    - uses: actions/upload-artifact@v3
+      with:
+        name: html
+        path: result/
+  build-pdf:
+    needs:
+    - check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v22
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - run: nix build .#pdf --no-sandbox
+    - uses: actions/upload-artifact@v3
+      with:
+        name: pdf
+        path: result/
+  publish:
+    if: github.event_name == 'push'
+    needs:
+    - build-html
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/download-artifact@v3
+      with:
+        name: html
+        path: result
+    - uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: result

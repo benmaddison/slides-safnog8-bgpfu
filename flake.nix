@@ -21,19 +21,20 @@
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         lib = inputs.builder.lib.mkLib pkgs;
         src = ./src;
+        assetPaths = [ "img" ];
       in
       rec {
         packages = rec {
           default = html;
 
           pdf = lib.buildPdf { inherit src; };
-          html = lib.buildHtml { inherit src; };
+          html = lib.buildHtml { inherit src assetPaths; };
 
           lint = lib.lint { inherit src; };
           spell = lib.spell { inherit src; config = ./cspell.yaml; };
         };
 
-        devShells.default = lib.watch { };
+        devShells.default = lib.watch { inherit assetPaths; };
 
         checks = {
           inherit (packages) lint spell;

@@ -128,13 +128,13 @@ https://wolcomm.github.io/eos-prefix-list-agent
 
 # EOS Prefix-List Agent operation
 
-![auto](./eos-prefix-list-agent.svg)
+![auto](img/eos-prefix-list-agent.svg)
 
 1. Inspect the `running-config` to determine which prefix-lists to build
 
 # EOS Prefix-List Agent operation
 
-![auto](./eos-prefix-list-agent.svg)
+![auto](img/eos-prefix-list-agent.svg)
 
 2. Query the [RPTK] HTTP API to retrieve list contents
 
@@ -142,13 +142,13 @@ https://wolcomm.github.io/eos-prefix-list-agent
 
 # EOS Prefix-List Agent operation
 
-![auto](./eos-prefix-list-agent.svg)
+![auto](img/eos-prefix-list-agent.svg)
 
 3. RPTK queries local IRR database (using `bgpq3` under the hood)
 
 # EOS Prefix-List Agent operation
 
-![auto](./eos-prefix-list-agent.svg)
+![auto](img/eos-prefix-list-agent.svg)
 
 4. Agent writes the prefix-list contents out to the local filesystem, and pokes EOS to read
 

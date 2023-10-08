@@ -2,6 +2,19 @@
 version: 0.2
 language: en-GB
 words:
-  - Maddison
-  - Workonline
+- Maddison
+- Workonline
+- JUNOS
+- pipelining
+- RPTK
+- bgpq3
+- bgpq4
+- irrc
+- bgpfu
+- RPKI
+- RIR
+- SAFNOG
+- prov
+- resp
+- slooooow
 ...

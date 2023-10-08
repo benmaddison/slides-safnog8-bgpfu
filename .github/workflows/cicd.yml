@@ -55,7 +55,7 @@ jobs:
       with:
         name: html
         path: result
-    - run: ln -s result/slides.html result/index.html
+    - run: mv result/slides.html result/index.html
     - uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages

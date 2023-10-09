@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696799558,
-        "narHash": "sha256-lpq6582yO/z0vB+V/hiPWSiu7hwmlLVpSlwkpn8az3Q=",
+        "lastModified": 1696841104,
+        "narHash": "sha256-akAn2Z3mcjtpOv89IP25SvvhKqGEE02HQ9UX5ypR2IA=",
         "owner": "benmaddison",
         "repo": "slides-template",
-        "rev": "96f691bca8fa7661814f0fb855c48886fc1528c8",
+        "rev": "5796255d970c3cc769e7ab150334828187ee9aff",
         "type": "github"
       },
       "original": {

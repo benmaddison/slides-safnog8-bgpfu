@@ -30,7 +30,7 @@
           pdf = lib.buildPdf { inherit src; };
           html = lib.buildHtml { inherit src assetPaths; };
 
-          lint = lib.lint { inherit src; };
+          lint = lib.lint { inherit src; config = ./.markdownlint.yml; };
           spell = lib.spell { inherit src; config = ./cspell.yaml; };
         };
 

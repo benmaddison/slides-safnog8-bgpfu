@@ -38,11 +38,9 @@ A collection of **RPSL** object databases
 
 Uses `as-set`, `aut-num`, `route` and `route6` objects:
 
-<!-- markdownlint-disable line_length -->
 0. Begin with `as-set` name
 1. Recursively look-up members of each set encountered using `members:` attribute
 2. For each `aut-num` object found in #1, search for `route`/`route6` objects with matching `origin:` attribute
-<!-- markdownlint-restore -->
 
 # Key points
 
@@ -50,7 +48,7 @@ Uses `as-set`, `aut-num`, `route` and `route6` objects:
 - IRR generated lists depend on the data that exists at the time of generation
 - IRR data is messy
 
-<!-- markdownlint-disable-next-line MD026 -->
+<!-- markdownlint-disable-next-line no-trailing-punctuation -->
 # The early days!
 
 ``` figure
@@ -59,11 +57,11 @@ Uses `as-set`, `aut-num`, `route` and `route6` objects:
        <- TCL script ----          <- query resp. --
 ```
 
-- `alias` configured on the local router sources and execs TCL script
-- `prov` runs a perl CGI service:
-  - queries an IRR Mirror
-  - dynamically writes a TCL script
-- returned script writes the local running-config using `ip prefix-list ...` commands
+-   `alias` configured on the local router sources and execs TCL script
+-   `prov` runs a perl CGI service:
+    - queries an IRR Mirror
+    - dynamically writes a TCL script
+-   returned script writes the local running-config using `ip prefix-list ...` commands
 
 # Config provisioning at AS37271
 
@@ -118,11 +116,9 @@ Management/policy-plane separation
 
 Router OS support requirements:
 
-<!-- markdownlint-disable line_length -->
 - API-driven configuration inspection / replacement
 - 3rd-party process runtime
 - Efficient "external" configuration incorporation (e.g. EOS URL-based prefix-lists, JUNOS ephemeral DB, etc)
-<!-- markdownlint-restore -->
 
 # Gen1 - EOS Prefix-List Agent
 
@@ -133,7 +129,7 @@ Router OS support requirements:
 - Uses EOS-SDK runtime
 - In production at Workonline since 2019
 
-<!-- markdownlint-disable no-duplicate-heading line_length ol-prefix -->
+<!-- markdownlint-disable no-duplicate-heading ol-prefix -->
 # EOS Prefix-List Agent operation
 
 ![auto](img/eos-prefix-list-agent.svg)
@@ -183,24 +179,24 @@ Project goals:
 
 # Building blocks
 
-- `irrc-rs` <https://github.com/wolcomm/irrc-rs>
-  IRRd query protocol client library, with query pipelining
-- `rpsl-rs` <https://github.com/wolcomm/rpsl-rs>
-  RPSL syntax parser, AST and expression evaluation library
-- `generic-ip-rs` <https://github.com/wolcomm/generic-ip-rs>
-  IP address type library, including IP prefix set data structures
+-   `irrc-rs` <https://github.com/wolcomm/irrc-rs>
+    IRRd query protocol client library, with query pipelining
+-   `rpsl-rs` <https://github.com/wolcomm/rpsl-rs>
+    RPSL syntax parser, AST and expression evaluation library
+-   `generic-ip-rs` <https://github.com/wolcomm/generic-ip-rs>
+    IP address type library, including IP prefix set data structures
 
 # Project status
 
 <https://github.com/bgpfu/bgpfu-rs>
 
-- Working RPSL expression evaluation tool (`bgpfu-cli`)
-  - needs support for `AS_PATH` filters
-  - needs contributions for vendor config dialects
-- Working JUNOS prefix-list-agent (`bgpfu-junos-agent`)
-  - release pending some bug fixes in JUNOS
-  - FreeBSD experts welcome to provide build-pipeline knowledge
-  - port to JUNOS Evo planned for early late 2023
+-   Working RPSL expression evaluation tool (`bgpfu-cli`)
+    - needs support for `AS_PATH` filters
+    - needs contributions for vendor config dialects
+-   Working JUNOS prefix-list-agent (`bgpfu-junos-agent`)
+    - release pending some bug fixes in JUNOS
+    - FreeBSD experts welcome to provide build-pipeline knowledge
+    - port to JUNOS Evo planned for early late 2023
 
 # FIN
 
